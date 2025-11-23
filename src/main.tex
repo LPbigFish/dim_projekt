@@ -1,0 +1,142 @@
+\documentclass[a4paper, 10pt, oneside]{article}       % nechceme twoside
+\usepackage{lmodern}                                  % latin modern font
+\usepackage[utf8]{inputenc}                           % UTF-8
+\usepackage[a4paper, left=20mm, right=30mm, top=30mm, bottom=35mm]{geometry}
+\usepackage{booktabs}
+\usepackage[table]{xcolor}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{siunitx}
+\usepackage{listings}
+\usepackage{caption}
+
+\usepackage[ruled, vlined, czech] {algorithm2e}
+\usepackage[czech=quotes]{csquotes}
+\usepackage{cmap}
+\usepackage{graphicx}
+\usepackage[T1]{fontenc}
+\usepackage[style=numeric,backend=biber,sorting=nty]{biblatex}
+\usepackage[czech]{babel}                             % tenhle musi byt za biblatex
+
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{verbatim}
+\usepackage{algorithm2e}
+
+\usepackage{amsmath}
+\usepackage{amssymb}                                  % velice důležité pro symboly
+
+\usepackage{tikz}
+\usetikzlibrary{graphs,graphs.standard}
+
+\newcolumntype{e}{D{,}{,}{3.5}}                       % zarovnání hodnot v tabulce podle .
+
+% Úvodní strana
+\usepackage{titling}
+\title{\Huge\textbf{Diskrétní matematika}\\
+{\textbf{Projekt}}\\
+{\Large číslo zadání \underline{\makebox[1cm]{5}}}}
+\author{}                                             % nutno ponechat prázdné
+\date{}
+\renewcommand\maketitlehooka{\null\mbox{}\vfill}      % vertically CENTER title page!!!
+\renewcommand\maketitlehookd{\vfill\null}
+
+\usepackage{fancyhdr}
+\renewcommand{\headrulewidth}{0pt}                    % odstraní čáru pod textem v záhlaví
+
+%\usepackage[useregional]{datetime2}                  % pro hod:min pomocí \DTMnow místo \today
+\pagestyle{fancy} 				                      % nastavení stylu záhlaví a zápatí
+\fancyhead[LO]{\Large VŠB - TUO}
+\fancyhead[RO]{\Large Datum \underline{\the\day.\the\month.\the\year}}
+\fancyfoot[LO]{\Large Osobní číslo \underline{\makebox[2.5cm]{STE0610 }}}
+\fancyfoot[RO]{\Large Jméno \underline{\makebox[4cm]{Filip Štegner}}}
+\fancyfoot[C]{}                                       % smaže číslování titulní strany!!!
+
+% ZAČÁTEK*********************************************
+\begin{document}
+
+\shorthandoff{-}
+
+% TITULNÍ STRANA
+\maketitle\thispagestyle{fancy}
+
+\vfill
+\hfill
+\begin{table}[b]
+  \begin{tabular}{c|p{3cm}}
+    \textbf{Příklad} & \textbf{Poznámky} \\
+    \hline
+        \rule{0pt}{1cm} \centering 1 &  \\
+        \rule{0pt}{1.5cm}\\
+        \rule{0pt}{1cm} \centering 2 &  \\
+        \rule{0pt}{1.5cm}\\
+  \end{tabular}
+\end{table}
+
+\clearpage                                            % zprovozní náš custom header!!!
+
+% Záhlaví a zápatí
+\fancyhead{}                                          % clear all header fields
+\fancyfoot{}                                          % clear all footer fields
+%\fancyhf{}                                           % clear existing header/footer entries
+
+\fancyhead[LO]{\textit{Diskrétní matematika}}         % text v záhlaví
+
+\fancyhead[RO]{\thepage}                              % číslování v záhlaví
+
+\newpage
+\setcounter{page}{1}
+\section{Kombinatorika}\label{sec:sec_1}
+
+\textit{V rozvodné síti přípojných bodů označených $0, 1, . . . , N$ sledujeme dostupný příkon $P_k$ v každém
+bodě. Na vstupu do prvního bodu $(k = 0)$ je přiveden příkon $P_{in} = 230$. Regulace přenosu probíhá
+po úsecích a má dvě složky: \newline
+\begin{itemize}
+  \item[-] \textbf{Tlumení skoků přenosu: } změnou příkonu mezi dvěma sousedními body označme $\varDelta_k := P_k - P_{k-1}$.
+  Při přechodu na další úsek se tato změna přetlumí koeficientem $ r \in (0, 1) $ a obrátí vliv (regulace odbourává předchozí skok): 
+  na dalším úseku tedy platí
+  $$ \varDelta_{k+1} = -r \varDelta_k. $$
+  \item[-] \textbf{Lokální odběr: } v bodě s indexem $k$ se odebere výkon $s_k$ rostoucí lineárně s indexem
+  $$ s_k = s_0 + \alpha k $$
+\end{itemize}
+Skutečný přechod z $k$ na $k+1$ tedy kombinuje tlumení skoku i místní odběr:
+$$ \varDelta_{k+1} = -r \varDelta_k - s_k, \varDelta_0 = 0, P_0 = P_{in} $$
+\begin{enumerate}
+  \item Z definice $\varDelta_k$ odvoďte vztah pro příkon v k-tem bodě závislý na příkonech ve dvou předchozích bodech a lokálním odběru platný pro $k = 2, . . . , N$.
+  \item Určete typ rovnice a obecné řešení pro dostupný příkon v k-tem bodě, pokud víte, že $r = 1/2$, $s_0 = 2$, $\alpha = 6$.
+  \item Pro $N = 5$, $r = 1/2$, $s_0 = 2$, $\alpha = 6$, $P_{in} = 230$ spočítejte $P_1,..., P_5$. Ověřte, že pro $k = 0, ..., 4$ platí $\varDelta_{k+1} = -r \varDelta_k - s_k$ a stručně okomentujte trend $P_k$.
+\end{enumerate}
+}
+\subsection{Řešení:}
+
+\newpage
+\section{Teorie grafů}\label{sec:sec_2}
+
+\textit{Energetická společnost plánuje propojit osm výrobních uzlů \textrm{A, B, C, D, E, F, G, H}. Mezi některými
+dvojicemi uzlů lze vybudovat přímé vedení. Každé vedení má váhu odpovídající nákladům (váha).
+vedení jsou obousměrná, všechny váhy jsou kladné.
+\begin{center}
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|c|c|c|cc}
+    \multicolumn{1}{|l|}{Spojení} & \multicolumn{1}{l|}{Váha} & \multicolumn{1}{l|}{Spojení} & \multicolumn{1}{l|}{Váha} & \multicolumn{1}{l|}{Spojení} & \multicolumn{1}{l}{Váha} \\ \hline
+    A-B                           & 4                         & B-C                          & 2                         & \multicolumn{1}{c|}{D-E}     & 3                        \\
+    A-C                           & 5                         & B-D                          & 6                         & \multicolumn{1}{c|}{D-F}     & 5                        \\
+    A-E                           & 9                         & C-E                          & 7                         & \multicolumn{1}{c|}{E-F}     & 4                        \\
+    B-E                           & 3                         & C-F                          & 8                         & \multicolumn{1}{c|}{F-G}     & 2                        \\
+    B-G                           & 9                         & D-G                          & 4                         & \multicolumn{1}{c|}{G-H}     & 3                        \\
+    E-H                           & 6                         & F-H                          & 5                         & \multicolumn{2}{c}{---}                                
+  \end{tabular}
+\end{table}
+\end{center}
+\begin{enumerate}
+  \item Nakreslete graf odpovídající uvedené tabulce propojení.
+  \item Ověřte, že je graf souvislý.
+  \item určete nejnižší náklady potřebné na vybudování jednotlivých vedení začínající v uzlu A a vedoucí do každého uzlu.
+  \item Pokud bychom chtěli nalézt nejlevnější libovolné vedení propojující věchny uzly (ne nutně cestu), jaký jiný algoritmus bychom k tomu mohli použít?
+\end{enumerate}
+}
+
+\subsection{Řešení:}
+  
+\end{document}
