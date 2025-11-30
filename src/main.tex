@@ -109,6 +109,10 @@ $$ \varDelta_{k+1} = -r \varDelta_k - s_k, \varDelta_0 = 0, P_0 = P_{in} $$
 }
 \subsection{Řešení:}
 
+\textit{
+S
+}
+
 \newpage
 \section{Teorie grafů}\label{sec:sec_2}
 
@@ -138,5 +142,43 @@ vedení jsou obousměrná, všechny váhy jsou kladné.
 }
 
 \subsection{Řešení:}
-  
+\begin{enumerate}
+  \item \textit{Nakreslený graf:
+  \begin{center}
+  \begin{tikzpicture}[scale=1.2]
+    \begin{scope}[every node/.style={circle,thick,draw}]
+      \node (A) at (90:3.5) {A};
+      \node (B) at (30:3.5) {B};
+      \node (D) at (330:3.5) {D};
+      \node (G) at (295:4) {G};
+      \node (F) at (210:3.5) {F};
+      \node (C) at (150:3.5) {C};
+      \node (H) at (245:4) {H};
+      \node (E) at (35:1) {E};
+    \end{scope}
+    \begin{scope}[every node/.style={fill=white, circle},
+      every edge/.style={draw=black, thick}]
+      \path [-] (A) edge node {$4$} (B);
+      \path [-] (A) edge node {$5$} (C);
+      \path [-] (B) edge node {$6$} (D);
+      \path [-] (B) edge node {$3$} (E);
+      \path [-] (C) edge node {$7$} (E);
+      \path [-] (C) edge node {$8$} (F);
+      \path [-] (D) edge node {$5$} (F);
+      \path [-] (D) edge node {$4$} (G);
+      \path [-] (E) edge[bend right=7] node {$6$} (H);
+      \path [-] (F) edge node {$2$} (G);
+      \path [-] (F) edge node {$5$} (H);
+      \path [-] (G) edge node {$3$} (H);
+      \path [-] (B) edge node {$2$} (C);
+      \path [-] (A) edge[bend left=15] node {$9$} (E);
+      \path [-] (D) edge[bend left=20] node {$3$} (E);
+      \path [-] (E) edge node {$4$} (F);
+      \path [-] (B) edge node {$9$} (G);
+    \end{scope}
+  \end{tikzpicture}
+\end{center}
+  }
+\end{enumerate}
+ 
 \end{document}

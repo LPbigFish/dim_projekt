@@ -20,6 +20,7 @@
             # scheme-full includes essentially everything. 
             # If disk space is an issue, switch to 'scheme-medium' or 'scheme-small'
             texlive.combined.scheme-full
+            tex-fmt
             
             # Additional LaTeX utilities (often included in scheme-full, but explicit is safe)
             biber
